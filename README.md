@@ -6,7 +6,7 @@ Este proyecto toma como base la lógica algorítmica fundamental de una lista de
 
 ---
 
-## 🎯 ¿Para qué sirve TodoAppBasic1.2?
+##  ¿Para qué sirve TodoAppBasic1.2?
 
 * **Gestión de tareas pendientes:** Permite anotar, organizar y dar seguimiento a tus deberes cotidianos en una interfaz limpia y atractiva.
 * **Visualización ordenada:** Presenta las tareas enumeradas cronológicamente con insignias numéricas claras (1, 2, 3...).
@@ -16,7 +16,7 @@ Este proyecto toma como base la lógica algorítmica fundamental de una lista de
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 | Tecnología | Versión | Rol en el Proyecto |
 | :--- | :--- | :--- |
@@ -25,7 +25,7 @@ Este proyecto toma como base la lógica algorítmica fundamental de una lista de
 
 ---
 
-## 🏗️ ¿Qué se hizo para crear el programa? (Paso a Paso)
+##  ¿Qué se hizo para crear el programa? (Paso a Paso)
 
 Para construir **TodoAppBasic1.2**, se siguió un proceso de desarrollo estructurado en 6 fases:
 
@@ -131,7 +131,7 @@ A continuación se detalla cada una de las funciones y procedimientos contenidos
 
 ---
 
-## 🔄 Comparación: De la Consola a Flet
+##  Comparación: De la Consola a Flet
 
 | Concepto en Python | Versión de Consola (`todo.py`) | Versión Gráfica Flet (`main.py`) |
 | :--- | :--- | :--- |
@@ -146,12 +146,13 @@ A continuación se detalla cada una de las funciones y procedimientos contenidos
 
 ---
 
-## 🚀 ¿Cómo Ejecutar la Aplicación?
+## ¿Cómo Ejecutar la Aplicación?
 
 1. Abre tu terminal (**PowerShell** o **Símbolo del sistema**).
 2. Navega hasta la carpeta del proyecto:
+   ## Por ejemplo:
    ```bash
-   cd "C:\Users\Lenovo\.gemini\antigravity\scratch\TodoAppBasic1.2"
+   cd "C:\Users\Proyecto\TodoAppBasic1.2"
    ```
 3. Ejecuta el archivo principal con Python:
    ```bash
