@@ -1,5 +1,4 @@
-
-name: Build and Test Python App
+name: Build APK for Android
 
 on:
   push:
@@ -23,13 +22,33 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flet
+        pip install flet flet-core
 
-    - name: Run application (test import)
-      run: |
-        python -c "import main; print('✓ Application imports successfully')"
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '11'
 
-    - name: Check syntax
+    - name: Install Flet CLI
       run: |
-        python -m py_compile main.py
-        echo "✓ Syntax validation passed"
+        pip install flet-cli
+
+    - name: Build APK
+      run: |
+        flet build apk --include-src
+
+    - name: Upload APK as Release Asset
+      uses: actions/upload-artifact@v3
+      with:
+        name: TodoApp-APK
+        path: build/outputs/apk/release/app-release.apk
+        retention-days: 30
+
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: build/outputs/apk/release/app-release.apk
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
