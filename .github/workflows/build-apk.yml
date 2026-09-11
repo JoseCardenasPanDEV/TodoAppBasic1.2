@@ -19,27 +19,54 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flet flet-core
-
     - name: Set up Java
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '11'
 
-    - name: Install Flet CLI
+    - name: Install system dependencies
       run: |
-        pip install flet-cli
+        sudo apt-get update
+        sudo apt-get install -y openjdk-11-jdk-headless
 
-    - name: Build APK
+    - name: Install Python dependencies
       run: |
-        flet build apk --include-src
+        python -m pip install --upgrade pip setuptools wheel
+        pip install flet buildozer cython
 
-    - name: Upload APK as Release Asset
+    - name: Create buildozer.spec
+      run: |
+        cat > buildozer.spec << 'EOF'
+        [app]
+        title = TodoAppBasic1.2
+        package.name = todoappbasic
+        package.domain = org.example
+        source.dir = .
+        source.include_exts = py,png,jpg,kv,atlas
+        version = 1.0
+        
+        [buildozer]
+        log_level = 2
+        warn_on_root = 1
+        EOF
+
+    - name: Build APK using Flet
+      run: |
+        flet build apk
+
+    - name: Upload APK as Artifact
       uses: actions/upload-artifact@v4
+      if: success()
       with:
         name: TodoApp-APK
-        path: build/outputs/apk/release/app-release.apk
+        path: build/outputs/apk/release/*.apk
+        retention-days: 30
+
+    - name: Create Release on Tags
+      if: startsWith(github.ref, 'refs/tags/') && success()
+      uses: softprops/action-gh-release@v2
+      with:
+        files: build/outputs/apk/release/*.apk
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
