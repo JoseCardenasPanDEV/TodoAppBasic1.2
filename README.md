@@ -160,10 +160,9 @@ A continuación se detalla cada una de las funciones y procedimientos contenidos
    ```
 4. Se abrirá inmediatamente la ventana visual de **TodoAppBasic1.2** lista para interactuar.
 
-* Y por si deseas descargar en tu Movil tambien puedes solo ve a:
- - Actions
- -- Artifacts
- y busca el archivo TodoAppBasic1.2-APK y descargarlo en tu móvil.
- Nota:
-- Tambien asegurate que tu celular permita descargar  archivos desconocidos por que si nó, te dará un error o simplemente no se instalará.
+ - Ah¡ Y por si deseas descargar en tu Móvil tambien lo puedes hacer solo ve a: --> Actions luego a --> Artifacts
+
+ - y busca el archivo TodoAppBasic1.2-APK y descargarlo en tu móvil.
+ - Nota:
+ - Tambien asegurate que tu celular permita descargar  archivos desconocidos por que si nó, te dará un error o simplemente no se instalará.
 
