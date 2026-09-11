@@ -228,16 +228,28 @@ def main(page: ft.Page):
         vertical_alignment=ft.CrossAxisAlignment.CENTER,
     )
 
-    # Agregamos todos los componentes a la página
+    # Agrupamos los componentes dentro de un SafeArea para proteger la barra de estado y la cámara del celular
+    contenido_principal = ft.Column(
+        controls=[
+            ft.Container(height=12),  # Espaciado superior para que no quede pegado arriba
+            encabezado,
+            ft.Divider(height=16, color=ft.Colors.TRANSPARENT),
+            fila_entrada,
+            mensaje_error,
+            barra_estado,
+            ft.Divider(height=10, color=ft.Colors.GREY_300),
+            estado_vacio,
+            lista_tareas,
+        ],
+        expand=True,
+    )
+
+    # Agregamos el contenido protegido a la página
     page.add(
-        encabezado,
-        ft.Divider(height=16, color=ft.Colors.TRANSPARENT),
-        fila_entrada,
-        mensaje_error,
-        barra_estado,
-        ft.Divider(height=10, color=ft.Colors.GREY_300),
-        estado_vacio,
-        lista_tareas,
+        ft.SafeArea(
+            content=contenido_principal,
+            expand=True,
+        )
     )
 
     # Dibujamos el estado inicial
